@@ -1,0 +1,5 @@
+kokoro
+torch
+soundfile
+fastapi
+uvicorn

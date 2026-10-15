@@ -1,0 +1,317 @@
+/* Talk to Me Widget (site-wide) */
+
+/* Prevent background scroll when widget open (mobile) */
+body.talk-widget-lock {
+  overflow: hidden;
+}
+
+.talk-widget {
+  position: fixed;
+  right: 30px;
+  bottom: 96px; /* sits above the Talk to Me button */
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.talk-widget--open {
+  pointer-events: auto;
+}
+.talk-widget__followups {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.talk-widget__followupBtn {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #1e3a8a;
+  padding: 6px 10px;
+  border-radius: 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.talk-widget__followupBtn:hover {
+  background: #e0e7ff;
+}
+
+
+.talk-widget__panel {
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 140px);
+  background: rgba(20, 20, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  transform: translateY(14px) scale(0.98);
+  opacity: 0;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.talk-widget--open .talk-widget__panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.talk-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px 12px 14px;
+  background: linear-gradient(135deg, rgba(102, 217, 237, 0.18), rgba(185, 131, 255, 0.18));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.talk-widget__headerControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.talk-widget__micBtn {
+  appearance: none;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: radial-gradient(circle at 30% 30%, #ff9a9e, #ff4ecb);
+  box-shadow:
+    0 0 0 0 rgba(255, 78, 203, 0.6),
+    0 6px 14px rgba(0, 0, 0, 0.35);
+  display: grid;
+  place-items: center;
+  transition: box-shadow 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.talk-widget__micIcon {
+  width: 14px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  position: relative;
+}
+
+.talk-widget__micIcon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 14px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-radius: 0 0 999px 999px;
+  transform: translateX(-50%);
+}
+
+.talk-widget__micBtn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 2px rgba(255, 78, 203, 0.4),
+    0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.talk-widget__micBtn--active {
+  animation: talk-mic-pulse 1.4s ease-out infinite;
+}
+
+@keyframes talk-mic-pulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(255, 78, 203, 0.7),
+      0 8px 20px rgba(0, 0, 0, 0.45);
+  }
+  70% {
+    box-shadow:
+      0 0 0 8px rgba(255, 78, 203, 0),
+      0 8px 20px rgba(0, 0, 0, 0.45);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(255, 78, 203, 0),
+      0 8px 20px rgba(0, 0, 0, 0.45);
+  }
+}
+
+.talk-widget__title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.1;
+}
+
+.talk-widget__listening {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 0.72rem;
+  color: #66d9ed;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 180ms ease, max-height 180ms ease;
+}
+
+.talk-widget__listening--active {
+  opacity: 1;
+  max-height: 1.5em;
+}
+
+.talk-widget__subtitle {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.talk-widget__close {
+  appearance: none;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+}
+
+.talk-widget__close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.talk-widget__body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+  max-height: 42vh;
+}
+
+.talk-widget__msg {
+  display: flex;
+}
+
+.talk-widget__msg--user {
+  justify-content: flex-end;
+}
+
+.talk-widget__msg--bot {
+  justify-content: flex-start;
+}
+
+.talk-widget__bubble {
+  max-width: 85%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.talk-widget__msg--bot .talk-widget__bubble {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.talk-widget__msg--user .talk-widget__bubble {
+  background: linear-gradient(135deg, rgba(102, 217, 237, 0.85), rgba(185, 131, 255, 0.85));
+  color: #0b0b0c;
+  border: none;
+}
+
+.talk-widget__quick {
+  padding: 12px 14px 14px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.talk-widget__quickTitle {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 10px;
+}
+
+.talk-widget__quickGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.talk-widget__quickBtn {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.talk-widget__quickBtn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(102, 217, 237, 0.35);
+}
+
+.talk-widget__backdrop {
+  display: none;
+}
+
+/* Mobile: show backdrop + full width feeling */
+@media (max-width: 768px) {
+  .talk-widget {
+    right: 20px;
+    bottom: 90px;
+  }
+}
+
+@media (max-width: 520px) {
+  .talk-widget {
+    right: 15px;
+    left: 15px;
+    bottom: 86px;
+  }
+
+  .talk-widget__panel {
+    width: auto;
+    max-width: none;
+  }
+
+  .talk-widget__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .talk-widget--open .talk-widget__backdrop {
+    opacity: 1;
+  }
+}

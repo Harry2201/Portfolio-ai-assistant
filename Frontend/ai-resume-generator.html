@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume & Cover Letter Generator - Hariom Pandey</title>
+  <link rel="stylesheet" href="project-detail.css">
+  <link rel="stylesheet" href="talk-to-me-widget.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="logo">Hariom<span>_Pandey</span></div>
+    <div class="hamburger-menu" id="hamburger-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-menu">
+      <a href="index.html"><span>// 01</span> home</a>
+      <a href="index.html#expertise"><span>// 02</span> expertise</a>
+      <a href="index.html#work"><span>// 03</span> work</a>
+      <a href="index.html#about"><span>// 04</span> experience</a>
+      <a href="index.html#contact"><span>// 05</span> contact</a>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <div class="sidebar">
+    <button class="back-btn-sidebar" onclick="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12,19 5,12 12,5"/>
+      </svg>
+    </button>
+    <div class="theme-toggle">
+      <span class="toggle-label active" onclick="toggleTheme('dark')">Dark</span>
+      <span class="toggle-label" onclick="toggleTheme('light')">Light</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="project-main">
+    <div class="project-container">
+
+      <!-- Project Header -->
+      <div class="project-header">
+        <div class="project-category">AI & Machine Learning-</div>
+        <h1 class="project-title">AI Resume & Cover Letter Generator</h1>
+        <div class="breadcrumbs">
+          <span>Home</span>
+          <span>></span>
+          <span>Portfolio</span>
+          <span>></span>
+          <span>AI Resume & Cover Letter Generator</span>
+        </div>
+      </div>
+
+             <!-- Project Content Section -->
+       <div class="project-content-section">
+         <!-- Project Description -->
+         <div class="project-description-left">
+           <div class="project-description">
+             <p>
+               An intelligent web-based tool that generates personalized resumes and cover letters using advanced natural language processing.
+               The system analyzes user input and creates professional, tailored documents that stand out in today's competitive job market.
+               Features include AI-powered content creation, ATS optimization, professional templates, real-time preview, and secure data handling.
+             </p>
+           </div>
+
+           <!-- Project Details -->
+           <div class="project-details">
+             <div class="detail-item">
+               <h3>Client</h3>
+               <p>Personal Project</p>
+             </div>
+             <div class="detail-item">
+               <h3>Technologies</h3>
+               <p>Python, OpenAI API, HTML, CSS3, Vanilla JavaScript</p>
+             </div>
+           </div>
+
+           <!-- Project Action -->
+           <div class="project-action">
+             <a href="#" class="open-project-btn">
+               GitHub
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <line x1="5" y1="12" x2="19" y2="12"/>
+                 <polyline points="12,5 19,12 12,19"/>
+               </svg>
+             </a>
+           </div>
+         </div>
+
+         <!-- Key Features -->
+         <div class="project-features-right">
+           <div class="key-features">
+             <h3>Key Features</h3>
+             <div class="features-grid">
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                     <path d="M2 17l10 5 10-5"/>
+                     <path d="M2 12l10 5 10-5"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>AI Integration</h4>
+                   <p>Multiple AI services with fallback mechanisms</p>
+                 </div>
+               </div>
+
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                     <polyline points="14,2 14,8 20,8"/>
+                     <line x1="16" y1="13" x2="8" y2="13"/>
+                     <line x1="16" y1="17" x2="8" y2="17"/>
+                     <polyline points="10,9 9,9 8,9"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>PDF Generation</h4>
+                   <p>Client-side PDF export using jsPDF</p>
+                 </div>
+               </div>
+
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                     <line x1="8" y1="21" x2="16" y2="21"/>
+                     <line x1="12" y1="17" x2="12" y2="21"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>Responsive Design</h4>
+                   <p>Mobile-friendly interface</p>
+                 </div>
+               </div>
+
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <circle cx="12" cy="12" r="5"/>
+                     <path d="M12 1v2"/>
+                     <path d="M12 21v2"/>
+                     <path d="M4.22 4.22l1.42 1.42"/>
+                     <path d="M18.36 18.36l1.42 1.42"/>
+                     <path d="M1 12h2"/>
+                     <path d="M21 12h2"/>
+                     <path d="M4.22 19.78l1.42-1.42"/>
+                     <path d="M18.36 5.64l1.42-1.42"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>Theme System</h4>
+                   <p>Dark/light mode toggle</p>
+                 </div>
+               </div>
+
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                     <circle cx="8.5" cy="8.5" r="1.5"/>
+                     <polyline points="21,15 16,10 5,21"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>Template System</h4>
+                   <p>Multiple resume templates</p>
+                 </div>
+               </div>
+
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <circle cx="12" cy="12" r="10"/>
+                     <polyline points="12,6 12,12 16,14"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>Real-time Generation</h4>
+                   <p>Dynamic content creation</p>
+                 </div>
+               </div>
+
+               <div class="feature-item">
+                 <div class="feature-icon">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                     <line x1="12" y1="9" x2="12" y2="13"/>
+                     <line x1="12" y1="17" x2="12.01" y2="17"/>
+                   </svg>
+                 </div>
+                 <div class="feature-content">
+                   <h4>Error Handling</h4>
+                   <p>Graceful fallbacks when AI services fail</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+
+
+    </div>
+  </main>
+
+
+
+  </footer>
+ <!-- Project Images -->
+ <div class="project-images">
+    <div class="image-grid">
+      <div class="image-item">
+        <img src="image1.png" alt="AI Resume Generator Interface" class="project-image">
+      </div>
+      <div class="image-item">
+        <img src="image2.png" alt="Document Generation Process" class="project-image">
+      </div>
+      <div class="image-item">
+        <img src="image3.png" alt="ATS Optimization Features" class="project-image">
+      </div>
+      <div class="image-item">
+        <img src="image4.png" alt="Template Selection Interface" class="project-image">
+      </div>
+    </div>
+  </div>
+
+</div>
+  <!-- Talk to Me Button -->
+  <button class="talk-to-me-btn" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    Talk to Me
+  </button>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+  <script src="talk-to-me-widget.js"></script>
+
+  <!-- Project Page JavaScript -->
+  <script>
+    // Theme toggle functionality
+    function toggleTheme(theme) {
+      const body = document.body;
+      const darkLabel = document.querySelector('.toggle-label:first-child');
+      const lightLabel = document.querySelector('.toggle-label:last-child');
+
+      if (theme === 'light') {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        darkLabel.classList.remove('active');
+        lightLabel.classList.add('active');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+        darkLabel.classList.add('active');
+        lightLabel.classList.remove('active');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Back button functionality
+    function goBack() {
+      window.location.href = 'index.html#work';
+    }
+
+    // Load saved theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      toggleTheme(savedTheme);
+    });
+
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
+</body>
+</html>

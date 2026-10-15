@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Dashboard - Hariom Pandey</title>
+  <link rel="stylesheet" href="project-detail.css">
+  <link rel="stylesheet" href="talk-to-me-widget.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="logo">Hariom<span>_Pandey</span></div>
+    <div class="hamburger-menu" id="hamburger-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-menu">
+      <a href="index.html"><span>// 01</span> home</a>
+      <a href="index.html#expertise"><span>// 02</span> expertise</a>
+      <a href="index.html#work"><span>// 03</span> work</a>
+      <a href="index.html#about"><span>// 04</span> experience</a>
+      <a href="index.html#contact"><span>// 05</span> contact</a>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <div class="sidebar">
+    <button class="back-btn-sidebar" onclick="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12,19 5,12 12,5"/>
+      </svg>
+    </button>
+    <div class="theme-toggle">
+      <span class="toggle-label active" onclick="toggleTheme('dark')">Dark</span>
+      <span class="toggle-label" onclick="toggleTheme('light')">Light</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="project-main">
+    <div class="project-container">
+
+      <!-- Project Header -->
+      <div class="project-header">
+        <div class="project-category">Frontend Development-</div>
+        <h1 class="project-title">Parent Dashboard</h1>
+        <div class="breadcrumbs">
+          <span>Home</span>
+          <span>></span>
+          <span>Portfolio</span>
+          <span>></span>
+          <span>Parent Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Project Content Section -->
+      <div class="project-content-section">
+        <!-- Project Description -->
+        <div class="project-description-left">
+          <div class="project-description">
+            <p>
+              A comprehensive web-based dashboard designed for parents to monitor and manage their children's activities,
+              academic progress, and daily routines. The platform provides an intuitive interface for tracking homework,
+              extracurricular activities, and communication with teachers. Features include real-time notifications,
+              progress tracking, calendar integration, and responsive design for mobile access. This is a collaborative group project
+              that is currently in development and launching soon.
+            </p>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-details">
+            <div class="detail-item">
+              <h3>Client</h3>
+              <p>Personal Project</p>
+            </div>
+            <div class="detail-item">
+              <h3>Technologies</h3>
+              <p>HTML5, CSS3, JavaScript, Local Storage, Responsive Design</p>
+            </div>
+          </div>
+
+          <!-- Project Action -->
+          <div class="project-action">
+            <a href="https://github.com/Harry2201/School-Parent-Dashboard" class="open-project-btn">
+              GitHub
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12,5 19,12 12,19"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="project-features-right">
+          <div class="key-features">
+            <h3>Key Features</h3>
+            <div class="features-grid">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Activity Tracking</h4>
+                  <p>Monitor homework, assignments, and extracurricular activities with real-time updates</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Progress Analytics</h4>
+                  <p>Visual charts and reports showing academic performance and improvement trends</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Notification System</h4>
+                  <p>Instant alerts for upcoming deadlines, events, and important announcements</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Teacher Communication</h4>
+                  <p>Direct messaging system for seamless communication with teachers and school staff</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h4>Responsive Design</h4>
+                  <p>Mobile-first approach ensuring optimal experience across all devices and screen sizes</p>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Images -->
+      <div class="project-images">
+        <div class="project-image-container" data-aos="fade-up" data-aos-delay="200">
+          <img src="Parent_dashboard.png" alt="Parent Dashboard Main Interface" class="project-image">
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </main>
+
+  <script>
+    // Initialize AOS Animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease',
+      once: true,
+      offset: 100
+    });
+
+    // Theme Toggle Functionality
+    function toggleTheme(theme) {
+      const body = document.body;
+      const labels = document.querySelectorAll('.toggle-label');
+
+      if (theme === 'light') {
+        body.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+        labels[0].classList.remove('active');
+        labels[1].classList.add('active');
+      } else {
+        body.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
+        labels[0].classList.add('active');
+        labels[1].classList.remove('active');
+      }
+    }
+
+    // Load saved theme
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        toggleTheme('light');
+      }
+    });
+
+    // Hamburger Menu
+    const hamburger = document.getElementById('hamburger-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Back Button
+    function goBack() {
+      window.history.back();
+    }
+
+    // Image Interactions
+    function initImageInteractions() {
+      const images = document.querySelectorAll('.project-image');
+
+      images.forEach(image => {
+        image.addEventListener('click', function() {
+          // Create lightbox effect
+          const lightbox = document.createElement('div');
+          lightbox.className = 'lightbox';
+          lightbox.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            cursor: pointer;
+          `;
+
+          const img = document.createElement('img');
+          img.src = this.src;
+          img.style.cssText = `
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+          `;
+
+          lightbox.appendChild(img);
+          document.body.appendChild(lightbox);
+
+          lightbox.addEventListener('click', function() {
+            document.body.removeChild(lightbox);
+          });
+        });
+      });
+    }
+
+    // Initialize image interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      initImageInteractions();
+    });
+  </script>
+
+  <!-- Talk to Me Button -->
+  <button class="talk-to-me-btn" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    Talk to Me
+  </button>
+  <script src="talk-to-me-widget.js"></script>
+</body>
+</html>

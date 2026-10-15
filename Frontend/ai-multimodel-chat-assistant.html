@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Multimodel Chat Assistant - Hariom Pandey</title>
+  <link rel="stylesheet" href="ai-chat-assistant.css">
+  <link rel="stylesheet" href="talk-to-me-widget.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="logo">Hariom<span>_Pandey</span></div>
+    <div class="hamburger-menu" id="hamburger-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-menu">
+      <a href="index.html"><span>// 01</span> home</a>
+      <a href="index.html#expertise"><span>// 02</span> expertise</a>
+      <a href="index.html#work"><span>// 03</span> work</a>
+      <a href="index.html#about"><span>// 04</span> experience</a>
+      <a href="index.html#contact"><span>// 05</span> contact</a>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <div class="sidebar">
+    <button class="back-btn-sidebar" onclick="goBack()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12,19 5,12 12,5"/>
+      </svg>
+    </button>
+    <div class="theme-toggle">
+      <span class="toggle-label active" onclick="toggleTheme('dark')">Dark</span>
+      <span class="toggle-label" onclick="toggleTheme('light')">Light</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="project-main">
+    <div class="project-container">
+
+      <!-- Project Header -->
+      <div class="project-header">
+        <div class="project-category">AI & Machine Learning-</div>
+        <h1 class="project-title">AI Multimodel Chat Assistant</h1>
+        <div class="breadcrumbs">
+          <span>Home</span>
+          <span>></span>
+          <span>Portfolio</span>
+          <span>></span>
+          <span>AI Multimodel Chat Assistant</span>
+        </div>
+      </div>
+
+      <!-- Project Content Section -->
+      <div class="project-content-section">
+        <!-- Project Description -->
+        <div class="project-description-left">
+          <div class="project-description">
+            <p>
+              An advanced conversational AI assistant that integrates multiple AI models to provide intelligent, context-aware responses.
+              The system combines natural language processing, machine learning, and multimodal capabilities to deliver human-like interactions.
+              Features include real-time conversation, multi-model switching, content creation, Analysis and Reasoning, Analysing Document/Images and seamless integration with various AI APIs.
+            </p>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-details">
+            <div class="detail-item">
+              <h3>Client</h3>
+              <p>Personal Project</p>
+            </div>
+            <div class="detail-item">
+              <h3>Technologies</h3>
+              <p>Python, Fast API, Google Gemini API, Cloud Deployment</p>
+            </div>
+          </div>
+
+          <!-- Project Action -->
+          <div class="project-action">
+            <a href="https://github.com/Harry2201/Multimodel-Assistant" class="open-project-btn">
+              GitHub
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12,5 19,12 12,19"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- Project Images -->
+  <div class="project-images">
+    <div class="image-grid">
+      <div class="image-item">
+        <img src="image5.png" alt="AI Chat Assistant Interface" class="project-image">
+      </div>
+      <div class="image-item">
+        <img src="image6.png" alt="Conversation Flow" class="project-image">
+      </div>
+      <div class="image-item">
+        <img src="image7.png" alt="Multi-model Integration" class="project-image">
+      </div>
+      <div class="image-item">
+        <img src="image8.png" alt="Voice Interaction Features" class="project-image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Talk to Me Button -->
+  <button class="talk-to-me-btn" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    Talk to Me
+  </button>
+
+  <!-- External JavaScript -->
+  <script src="ai-chat-assistant.js"></script>
+  <script src="talk-to-me-widget.js"></script>
+
+  <!-- Project Page JavaScript -->
+  <script>
+    // Theme toggle functionality
+    function toggleTheme(theme) {
+      const body = document.body;
+      const darkLabel = document.querySelector('.toggle-label:first-child');
+      const lightLabel = document.querySelector('.toggle-label:last-child');
+
+      if (theme === 'light') {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        darkLabel.classList.remove('active');
+        lightLabel.classList.add('active');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+        darkLabel.classList.add('active');
+        lightLabel.classList.remove('active');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Back button functionality
+    function goBack() {
+      window.location.href = 'index.html#work';
+    }
+
+    // Load saved theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      toggleTheme(savedTheme);
+    });
+
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
+</body>
+</html>
