@@ -6,8 +6,9 @@ const aiChatState = {
 
 (() => {
   const WIDGET_ID = "talk-to-me-widget";
-  const BACKEND_URL = "http://localhost:5000/chat";
-  const TTS_URL = "http://localhost:5000/tts";
+
+  const BACKEND_URL = "https://portfolio-ai-assistant-api.onrender.com/chat";
+  const TTS_URL = "https://portfolio-ai-assistant-api.onrender.com/tts";
 
   function escapeHtml(str) {
     return String(str)
@@ -214,8 +215,7 @@ const aiChatState = {
     if (!text || !text.trim()) return;
 
     // Split the response into sentences.
-    const sentences =
-      text.match(/[^.!?]+(?:[.!?]+["')\]]*|$)/g) || [text];
+    const sentences = text.match(/[^.!?]+(?:[.!?]+["')\]]*|$)/g) || [text];
 
     const chunks = sentences.map((sentence) => sentence.trim()).filter(Boolean);
 
@@ -249,7 +249,7 @@ const aiChatState = {
       console.log(
         "[TTS] Response received after",
         ((performance.now() - startedAt) / 1000).toFixed(2),
-        "seconds"
+        "seconds",
       );
 
       if (!res.ok) {
@@ -321,7 +321,8 @@ const aiChatState = {
         audio.addEventListener("error", onError);
         audio.addEventListener("playing", onPlaying);
 
-        audio.play()
+        audio
+          .play()
           .then(() => {
             console.log("[TTS] audio.play() succeeded");
           })
@@ -333,7 +334,7 @@ const aiChatState = {
             console.error(
               "[TTS] audio.play() failed:",
               error.name,
-              error.message
+              error.message,
             );
 
             if (window.__talkToMeAudio === audio) {
@@ -375,7 +376,6 @@ const aiChatState = {
       console.error("[TTS] Playback failed:", error);
     }
   }
-
 
   // Render a follow-up question as a button.
   function renderFollowUp(text, body, followups) {
