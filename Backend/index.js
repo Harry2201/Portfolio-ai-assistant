@@ -350,7 +350,12 @@ app.post("/tts", async (req, res) => {
 
     const { Client } = await import("@gradio/client");
 
-    const client = await Client.connect("harry20042/portfolio-tts");
+    const client = await Client.connect(
+      "harry20042/portfolio-tts",
+      {
+        hf_token: process.env.HF_TOKEN,
+      }
+    );
 
     const result = await client.predict("/tts", {
       text: text.trim(),
