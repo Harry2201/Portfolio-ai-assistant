@@ -306,7 +306,6 @@ app.get("/", (req, res) => {
 
 // Proxy route to Text-to-Speech (TTS) backend
 
-
 app.post("/tts", async (req, res) => {
   const { randomUUID } = require("crypto");
   const { performance } = require("perf_hooks");
@@ -323,132 +322,90 @@ app.post("/tts", async (req, res) => {
         elapsedMs: Math.round(performance.now() - routeStarted),
         stage,
         ...details,
-      })
+      }),
     );
   };
-
-  log("REQUEST_RECEIVED", {
-    method: req.method,
-    path: req.originalUrl,
-    textLength: typeof req.body?.text === "string"
-      ? req.body.text.length
-      : 0,
-  });
 
   try {
     const { text } = req.body || {};
 
     if (typeof text !== "string" || !text.trim()) {
-      log("VALIDATION_FAILED");
       return res.status(400).json({
         error: "Text is required for TTS.",
         requestId,
       });
     }
 
-    // Configure TTS_BASE_URL as the base URL only.
-    const baseUrl = (
-      process.env.TTS_BASE_URL || "http://127.0.0.1:8001"
-    ).replace(/\/+$/, "");
-
-    const targetUrl = `${baseUrl}/tts`;
-
-    log("PYTHON_REQUEST_START", { targetUrl });
-
-    const fetchStarted = performance.now();
-
-    let response;
-
-    try {
-      response = await fetch(targetUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Request-ID": requestId,
-        },
-        body: JSON.stringify({ text: text.trim() }),
-        signal: AbortSignal.timeout(120000),
-      });
-    } catch (error) {
-      log("PYTHON_CONNECTION_FAILED", {
-        durationMs: Math.round(performance.now() - fetchStarted),
-        errorName: error.name,
-        errorMessage: error.message,
-        cause: error.cause?.message || null,
-      });
-
-      return res.status(502).json({
-        error: "Unable to connect to TTS service.",
+    if (text.trim().length > 1000) {
+      return res.status(400).json({
+        error: "Text must be 1000 characters or fewer.",
         requestId,
-        details: error.message,
       });
     }
 
-    log("PYTHON_RESPONSE_RECEIVED", {
-      status: response.status,
-      durationMs: Math.round(performance.now() - fetchStarted),
+    log("REQUEST_RECEIVED", { textLength: text.trim().length });
+    log("GRADIO_REQUEST_START", {
+      space: "harry20042/portfolio-tts",
     });
 
-    const parseStarted = performance.now();
-    const responseText = await response.text();
+    const { Client } = await import("@gradio/client");
 
-    let data;
+    const client = await Client.connect("harry20042/portfolio-tts");
 
-    try {
-      data = JSON.parse(responseText);
-    } catch {
-      log("PYTHON_INVALID_JSON", {
-        responsePreview: responseText.slice(0, 300),
-      });
-
-      return res.status(502).json({
-        error: "TTS service returned invalid JSON.",
-        requestId,
-      });
-    }
-
-    log("PYTHON_BODY_READ", {
-      durationMs: Math.round(performance.now() - parseStarted),
-      generationSeconds: data.generation_seconds ?? null,
+    const result = await client.predict("/tts", {
+      text: text.trim(),
     });
 
-    if (!response.ok) {
-      log("PYTHON_RETURNED_ERROR", {
-        status: response.status,
-        detail: data.detail || data.error || null,
+    const audioOutput = result?.data?.[0];
+    const statusOutput = result?.data?.[1];
+
+    let audioUrl =
+      typeof audioOutput === "string" ? audioOutput : audioOutput?.url;
+
+    if (audioUrl && audioUrl.startsWith("/")) {
+      audioUrl = `https://harry20042-portfolio-tts.hf.space${audioUrl}`;
+    }
+
+    if (!audioUrl || !/^https?:\/\//i.test(audioUrl)) {
+      log("INVALID_AUDIO_OUTPUT", {
+        audioOutput,
+        statusOutput,
       });
 
       return res.status(502).json({
-        error: "TTS service error.",
+        error: "TTS did not return a usable audio URL.",
         requestId,
-        details: data.detail || data.error || "Unknown TTS error",
       });
     }
+
+    const match = String(statusOutput || "").match(
+      /Generated successfully in ([\d.]+) seconds/,
+    );
+
+    const generationSeconds = match ? Number(match[1]) : null;
 
     log("REQUEST_COMPLETED", {
       totalMs: Math.round(performance.now() - routeStarted),
-      audioUrl: data.audio_url || null,
-      generationSeconds: data.generation_seconds ?? null,
+      generationSeconds,
     });
 
-    return res.json({ ...data, requestId });
+    return res.json({
+      audio_url: audioUrl,
+      generation_seconds: generationSeconds,
+      requestId,
+    });
   } catch (error) {
-    log("UNEXPECTED_ERROR", {
+    log("GRADIO_REQUEST_FAILED", {
       errorName: error.name,
       errorMessage: error.message,
-      stack: error.stack,
     });
 
-    return res.status(500).json({
-      error: "Unexpected TTS proxy error.",
+    return res.status(502).json({
+      error: "Unable to generate speech. Please try again.",
       requestId,
-      details: error.message,
     });
   }
 });
-
-
-
 
 app.post("/chat", async (req, res) => {
   try {
@@ -482,8 +439,7 @@ app.post("/chat", async (req, res) => {
     if (intent === "assistant_meta") {
       reply =
         "I am Hariom Pandey's portfolio assistant. I can answer questions about his background, skills, projects, and experience.";
-      followUp =
-        "Would you like to know about his background or projects?";
+      followUp = "Would you like to know about his background or projects?";
     } else {
       const completion = await client.chat.completions.create({
         model: "openai/gpt-oss-20b",

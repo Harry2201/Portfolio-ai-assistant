@@ -13,6 +13,7 @@
   "dependencies": {
     "@google/genai": "^1.39.0",
     "@google/generative-ai": "^0.24.1",
+    "@gradio/client": "^2.7.1",
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
